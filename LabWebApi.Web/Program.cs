@@ -7,6 +7,11 @@ builder.Services.AddSpaStaticFiles(configuration =>
 {
     configuration.RootPath = "ClientApp/dist";
 });
+
+//Infrastructure
+builder.Services.AddRepositories();
+builder.Services.AddDbContext(builder.Configuration.GetConnectionString("DefaultConnection"));
+
 var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {

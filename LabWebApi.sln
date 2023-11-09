@@ -3,7 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34221.43
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LabWebApi.Web", "LabWebApi.Web\LabWebApi.Web.csproj", "{925044E1-92B2-4BA9-908C-3A731BF536CD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LabWebApi.Web", "LabWebApi.Web\LabWebApi.Web.csproj", "{925044E1-92B2-4BA9-908C-3A731BF536CD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{56DC91DB-6566-4347-AC60-361A73F5C9F0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{DC12AFE3-0917-4CD1-B22A-60F2DCDF9093}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LabWebAPI.Contracts", "LabWebAPI.Contracts\LabWebAPI.Contracts.csproj", "{F2D23F44-F96E-4695-9456-8EEDCE3407BB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LabWebAPI.Services", "LabWebAPI.Services\LabWebAPI.Services.csproj", "{7CBD9F86-768E-4872-8D12-057863804CC1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LabWebAPI.Database", "LabWebAPI.Database\LabWebAPI.Database.csproj", "{B95178B3-3A4F-44F9-AD5F-BDE5C849B781}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,9 +25,26 @@ Global
 		{925044E1-92B2-4BA9-908C-3A731BF536CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{925044E1-92B2-4BA9-908C-3A731BF536CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{925044E1-92B2-4BA9-908C-3A731BF536CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F2D23F44-F96E-4695-9456-8EEDCE3407BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2D23F44-F96E-4695-9456-8EEDCE3407BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2D23F44-F96E-4695-9456-8EEDCE3407BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2D23F44-F96E-4695-9456-8EEDCE3407BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7CBD9F86-768E-4872-8D12-057863804CC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7CBD9F86-768E-4872-8D12-057863804CC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7CBD9F86-768E-4872-8D12-057863804CC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7CBD9F86-768E-4872-8D12-057863804CC1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B95178B3-3A4F-44F9-AD5F-BDE5C849B781}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B95178B3-3A4F-44F9-AD5F-BDE5C849B781}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B95178B3-3A4F-44F9-AD5F-BDE5C849B781}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B95178B3-3A4F-44F9-AD5F-BDE5C849B781}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F2D23F44-F96E-4695-9456-8EEDCE3407BB} = {56DC91DB-6566-4347-AC60-361A73F5C9F0}
+		{7CBD9F86-768E-4872-8D12-057863804CC1} = {DC12AFE3-0917-4CD1-B22A-60F2DCDF9093}
+		{B95178B3-3A4F-44F9-AD5F-BDE5C849B781} = {DC12AFE3-0917-4CD1-B22A-60F2DCDF9093}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {78212973-638C-493C-BD2B-5DE9B3C1C6F7}

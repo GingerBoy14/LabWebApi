@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -14,5 +15,6 @@ namespace LabWebAPI.Contracts.Data
         Task UpdateAsync(TEntity entity);
         Task DeleteAsync(TEntity entity);
         Task<int> SaveChangesAsync();
+        IQueryable<TEntity> Query(params Expression<Func<TEntity, object>>[] includes);
     }
 }

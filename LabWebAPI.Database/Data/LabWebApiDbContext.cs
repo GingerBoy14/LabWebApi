@@ -1,9 +1,10 @@
 ﻿using LabWebAPI.Contracts.Data.Entities;
 using LabWebAPI.Database.Data.Configurations;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 namespace LabWebAPI.Database.Data
 {
-    public class LabWebApiDbContext : DbContext
+    public class LabWebApiDbContext : IdentityDbContext<User>
     {
         public LabWebApiDbContext(DbContextOptions<LabWebApiDbContext> options) : base(options)
         {
@@ -14,6 +15,7 @@ namespace LabWebAPI.Database.Data
             base.OnModelCreating(modelBuilder);
             modelBuilder.ApplyConfiguration(new UserConfiguration());
         }
-        public DbSet<User> Users { get; set; }
+        public override DbSet<User> Users { get; set; }
+        public DbSet<RefreshToken> RefreshTokens { get; set; }
     }
 }

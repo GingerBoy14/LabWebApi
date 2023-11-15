@@ -1,5 +1,7 @@
 ﻿using LabWebAPI.Contracts.Data;
 using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
+
 namespace LabWebAPI.Database.Data
 {
     public class BaseRepository<TEntity> : IRepository<TEntity> where TEntity : class, IBaseEntity
@@ -35,6 +37,14 @@ namespace LabWebAPI.Database.Data
         public async Task UpdateAsync(TEntity entity)
         {
             await Task.Run(() => _dbContext.Entry(entity).State = EntityState.Modified);
+        }
+
+        public IQueryable<TEntity> Query(params Expression<Func<TEntity, object>>[] includes)
+        {
+            var query = includes
+            .Aggregate<Expression<Func<TEntity, object>>,
+            IQueryable<TEntity>>(_dbSet, (current, include) => current.Include(include));
+            return query;
         }
     }
 }

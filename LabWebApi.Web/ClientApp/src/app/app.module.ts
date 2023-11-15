@@ -10,7 +10,7 @@ import { HomeComponent } from './pages/home-components/home/home.component';
 import { HttpClientModule } from '@angular/common/http';
 import { JwtModule } from '@auth0/angular-jwt';
 import { LoginComponent } from './pages/auth-components/login/login.component';
-import { MatModule } from './core/modules/mat.module';
+import { MatModule } from './core/models/mat.module';
 import { NgModule } from '@angular/core';
 import { RegistrationComponent } from './pages/auth-components/registration/registration.component';
 import { RxReactiveFormsModule } from '@rxweb/reactive-form-validators';

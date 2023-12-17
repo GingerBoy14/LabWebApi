@@ -1,1 +1,5 @@
-export class CurrentUserInfo { id: any; userName: any; role: any; }
+export class CurrentUserInfo {
+  id: any;
+  userName: any;
+  role: any;
+}

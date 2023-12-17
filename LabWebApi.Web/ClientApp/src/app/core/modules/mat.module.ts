@@ -1,9 +1,11 @@
+import { MatNativeDateModule, MatOptionModule } from '@angular/material/core';
+
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import {MatDatepickerModule,} from '@angular/material/datepicker';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
-import { MatOptionModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatTableModule } from '@angular/material/table';
@@ -22,6 +24,8 @@ import { NgModule } from '@angular/core';
     MatSlideToggleModule,
     MatSelectModule,
     MatOptionModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   exports: [
     MatToolbarModule,
@@ -34,6 +38,8 @@ import { NgModule } from '@angular/core';
     MatSlideToggleModule,
     MatSelectModule,
     MatOptionModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
 })
 export class MatModule {}

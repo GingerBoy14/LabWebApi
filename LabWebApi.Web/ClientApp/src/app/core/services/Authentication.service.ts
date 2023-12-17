@@ -5,7 +5,7 @@ import {
   accountRegistrationUrl,
   refreshTokenUrl,
 } from 'src/app/configs/authController-endpoints';
-import { catchError, map } from "rxjs/operators";
+import { catchError, map } from 'rxjs/operators';
 
 import { AlertService } from './Alert.service';
 import { CurrentUserInfo } from '../models/auth/CurrentUserInfo';
@@ -37,14 +37,14 @@ export class AuthenticationService {
     this.token = this.storage.getItem('token')!;
     if (this.token) {
       this.getUserInfo(this.token);
-    }
-    //  else { this.currentUser = new UserInfo(); }
+    } /*else { this.currentUser = new UserInfo(); }*/
   }
   login(request: UserLogin): Observable<any> {
     return this.http.post<UserAutorization>(accountLoginUrl, request).pipe(
       map((tokens: UserAutorization) => this.setTokensInLocalStorage(tokens)),
-      catchError((err: { error: string; }) => {
-        this.alertService.errorAlert(err.error, 'Login Failed!');
+      catchError((err) => {
+        console.log()
+        this.alertService.errorAlert(err().error.error, 'Login Failed!');
         return of();
       })
     );
@@ -53,25 +53,25 @@ export class AuthenticationService {
     return this.http
       .post<UserAutorization>(accountRegistrationUrl, request)
       .pipe(
-        catchError(( err: { error: string; }) => {
-          this.alertService.errorAlert(err.error, 'Registration Failed!');
+        catchError((err) => {
+          this.alertService.errorAlert(err().error.error, 'Registration Failed!');
           return of();
         })
       );
   }
-  refreshToken(): Observable<UserAutorization> {
+  refreshToken(): Observable<any> {
     let request = new UserAutorization();
     request.refreshToken = this.storage.getItem('refreshToken')?.toString()!;
     request.token = localStorage.getItem('token')?.toString()!;
     return this.http.post<UserAutorization>(refreshTokenUrl, request).pipe(
-      map((tokens: UserAutorization) => {
+      map((tokens) => {
         if (tokens.token && tokens.refreshToken) {
           this.setTokensInLocalStorage(tokens);
         }
         return tokens;
       }),
-      catchError((err: { error: string; }) => {
-        this.alertService.errorAlert(err.error, 'Login Failed!');
+      catchError((err) => {
+        this.alertService.errorAlert(err().error.error, 'Login Failed!');
         return of();
       })
     );
@@ -120,3 +120,4 @@ export class AuthenticationService {
     return result;
   }
 }
+

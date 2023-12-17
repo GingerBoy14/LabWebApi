@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { ReactiveFormConfig } from '@rxweb/reactive-form-validators';
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',

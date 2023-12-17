@@ -23,6 +23,7 @@
     "@angular/router": "~13.3.0",
     "@auth0/angular-jwt": "4.2.0",
     "@rxweb/reactive-form-validators": "^2.1.8",
+    "@swimlane/ngx-datatable": "^20.1.0",
     "rxjs": "^6.5.3",
     "sweetalert2": "^11.10.0",
     "tslib": "^2.3.0",

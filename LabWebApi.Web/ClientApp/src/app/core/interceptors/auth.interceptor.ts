@@ -17,13 +17,18 @@ export class AuthInterceptor implements HttpInterceptor {
   constructor(
     private authService: AuthenticationService,
     private router: Router
-  ) {}
+  ) {
+   
+  }
   intercept(
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    return next.handle(req).pipe(
+    const token = localStorage.getItem('token')?.toString();
+
+    return next.handle(this.addTokenHeader(req, token)).pipe( 
       catchError((err) => {
+      
         if (err.status == 401 && err.headers.get('token-expired')) {
           return this.handle401Error(req, next);
         }
@@ -32,13 +37,15 @@ export class AuthInterceptor implements HttpInterceptor {
     );
   }
   private handle401Error(request: HttpRequest<any>, next: HttpHandler) {
+
     return this.authService.refreshToken().pipe(
       switchMap(() => {
         const token = localStorage.getItem('token')?.toString();
+      
         return next.handle(this.addTokenHeader(request, token));
       }),
       catchError((err) => {
-        if (err.error.error == 'Invalid refrash token') {
+        if (err.error.error == 'Invalid refresh token') {
           this.authService.logout();
           this.router.navigate(['/login']);
         }
@@ -48,6 +55,7 @@ export class AuthInterceptor implements HttpInterceptor {
     );
   }
   private addTokenHeader(request: HttpRequest<any>, token?: string) {
+  
     return request.clone({
       headers: request.headers.set('Authorization', 'Bearer ' + token),
     });

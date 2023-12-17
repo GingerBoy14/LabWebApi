@@ -22,6 +22,7 @@ public static class StartupSetup
     {
         services.AddScoped<IAuthenticationService, AuthenticationService>();
         services.AddScoped<IJwtService, JwtService>();
+        services.AddScoped<IAdminService, AdminService>();
     }
     public static void ConfigJwtOptions(this IServiceCollection services, IConfiguration config)
     {

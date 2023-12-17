@@ -34,4 +34,8 @@ namespace LabWebAPI.Contracts.Exceptions
     {
         public UserAlreadyExistsException(string value) : base($"User with this {value} was already exists!") { }
     }
+    public class UserNotFoundException : NotFoundException
+    {
+        public UserNotFoundException(string message) : base(message) { }
+    }
 }

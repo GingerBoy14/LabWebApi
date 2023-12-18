@@ -28,6 +28,11 @@ namespace LabWebAPI.Database.Data.Configurations
             builder
             .Property(x => x.ImageAvatarUrl)
             .IsRequired(false);
+            builder
+           .HasMany(x => x.Products)
+           .WithOne(x => x.UserWhoCreated)
+           .HasForeignKey(x => x.UserWhoCreatedId)
+           .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

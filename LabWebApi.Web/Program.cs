@@ -45,6 +45,7 @@ app.UseEndpoints(endpoints =>
 });
 
 app.AddSystemRolesToDb();
+app.AddProductToDb();
 app.UseSpa(spa =>
 {
     

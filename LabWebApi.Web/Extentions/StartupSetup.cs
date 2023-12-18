@@ -1,4 +1,5 @@
 ﻿using LabWebApi.Web.Middlewares;
+using LabWebAPI.Contracts.Data;
 using LabWebAPI.Contracts.Data.Entities;
 using LabWebAPI.Contracts.Helpers;
 using LabWebAPI.Database.Data.Seeding;
@@ -31,7 +32,30 @@ namespace LabWebApi.Web.Extensions
                 catch (Exception ex)
                 {
                     var logger = loggerFactory.CreateLogger<Program>();
-                    logger.LogError(ex, "An error occurred seeding the DB.");
+                    logger.LogError(ex, "An error occurred seeding the roles into DB.");
+                }
+            }
+        }
+        public static async void AddProductToDb(this WebApplication app)
+        {
+            using (var scope = app.Services.CreateScope())
+            {
+                var services = scope.ServiceProvider;
+                var loggerFactory = services.GetRequiredService<ILoggerFactory>();
+                try
+                {
+                    var logger = loggerFactory.CreateLogger<Program>();
+                    logger.LogDebug("create product for admin");
+                    System.Diagnostics.Debug.WriteLine("create product for admin");
+                    var userManager = services.GetRequiredService<UserManager<User>>();
+                    var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
+                    var productRepository = services.GetRequiredService<IRepository<Product>>();
+                    await SeedingProduct.BasicProduct(userManager, productRepository);
+                }
+                catch (Exception ex)
+                {
+                    var logger = loggerFactory.CreateLogger<Program>();
+                    logger.LogError(ex, "An error occurred seeding the product into DB.");
                 }
             }
         }

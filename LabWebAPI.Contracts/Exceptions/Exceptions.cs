@@ -38,4 +38,8 @@ namespace LabWebAPI.Contracts.Exceptions
     {
         public UserNotFoundException(string message) : base(message) { }
     }
+    public class ProductNotFoundException : NotFoundException
+    {
+        public ProductNotFoundException(string message) : base(message) { }
+    }
 }

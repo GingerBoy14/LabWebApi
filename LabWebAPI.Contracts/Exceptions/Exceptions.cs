@@ -42,4 +42,8 @@ namespace LabWebAPI.Contracts.Exceptions
     {
         public ProductNotFoundException(string message) : base(message) { }
     }
+    public class UnauthorizedToProductChangeException : UnauthorizedException
+    {
+        public UnauthorizedToProductChangeException(string message) : base(message) { }
+    }
 }

@@ -1,4 +1,5 @@
-﻿using LabWebAPI.Contracts.DTO.AdminPanel;
+﻿using LabWebAPI.Contracts.Data.Entities;
+using LabWebAPI.Contracts.DTO.AdminPanel;
 using LabWebAPI.Contracts.DTO.Product;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,7 @@ namespace LabWebAPI.Contracts.Services
         Task<IEnumerable<ProductDTO>> GetProductsAsync();
         Task<ProductDTO> GetProductByIdAsync(string id);
         Task<ProductDTO> EditProductAsync(ProductDTO productDTO);
-        Task DeleteProductAsync(string id);
+        Task<bool> AddProduct(Product product);
+        Task DeleteProductAsync(string id, string userId);
     }
 }

@@ -13,6 +13,15 @@ namespace LabWebAPI.Services.Validators
         {
             return await manager.FindByNameAsync(username) != null;
         }
+        public static async Task<bool> IsAdmin(UserManager<User> manager, string userId)
+        {
+            var user = await manager.FindByIdAsync(userId);
+            if (user == null)
+            {
+                return false;
+            }
+            return await manager.IsInRoleAsync(user, AuthorizationRoles.Admin.ToString());
+        }
         public static async Task<bool> IsSystemRoleAndNoAdmin(RoleManager<IdentityRole> manager, AuthorizationRoles role)
         {
             return role == AuthorizationRoles.Admin ||

@@ -1,4 +1,5 @@
 ﻿using LabWebAPI.Contracts.Data.Entities;
+using LabWebAPI.Contracts.DTO.AdminPanel;
 using LabWebAPI.Contracts.Roles;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,6 @@ namespace LabWebAPI.Contracts.DTO.Product
         public string Description { get; set; }
         public decimal Price { get; set; }
         public DateTime PublicationDate { get; set; }
-        public User UserWhoCreated { get; set; }
+        public SimpleUserInfoDTO UserWhoCreated { get; set; }
     }
 }

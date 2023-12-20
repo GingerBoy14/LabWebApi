@@ -1,0 +1,11 @@
+.data-table {
+  margin: 15px;
+  padding-top: 15px;
+}
+
+#product-list-header {
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+  align-items: flex-start;
+}

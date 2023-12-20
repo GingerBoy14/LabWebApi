@@ -1,6 +1,7 @@
 ﻿using LabWebAPI.Contracts.Data.Entities;
 using LabWebAPI.Contracts.DTO.AdminPanel;
 using LabWebAPI.Contracts.DTO.Product;
+using LabWebAPI.Contracts.Exceptions;
 using LabWebAPI.Contracts.Roles;
 using LabWebAPI.Contracts.Services;
 using Microsoft.AspNetCore.Authorization;
@@ -38,7 +39,7 @@ namespace LabWebApi.Web.Controllers
             return Ok(result);
         }
         [HttpPut("products")]
-        public async Task<IActionResult> EditProduct([FromBody] SimpleProductDTO model)
+        public async Task<IActionResult> EditProduct([FromBody] SimpleProductWithIdDTO model)
         {
             var result = await _productService.EditProductAsync(model);
             return Ok(result);
@@ -59,7 +60,7 @@ namespace LabWebApi.Web.Controllers
                 var user = await _userManager.FindByIdAsync(UserId);
                 if (user == null)
                 {
-                    return BadRequest("User not found");
+                    return BadRequest(new UserNotFoundException("User not found"));
                 }
 
                 // Створіть новий продукт
@@ -75,13 +76,30 @@ namespace LabWebApi.Web.Controllers
                 // Додайте продукт до бази даних
                 var result = await _productService.AddProduct(product);
 
+               var mappedProduct =  new ProductDTO()
+                {
+                    Id = product.Id,
+                    Name = product.Name,
+                    Description = product.Description,
+
+                    Price = product.Price,
+                    PublicationDate = product.PublicationDate,
+                    UserWhoCreated = new SimpleUserInfoDTO
+                    {
+                        Id = product.UserWhoCreated.Id,
+                        Name = product.UserWhoCreated.Name,
+                        Email = product.UserWhoCreated.Email,
+                        Surname = product.UserWhoCreated.Surname
+                    }
+                };
+
                 if (result)
                 {
-                    return Ok("Product created successfully");
+                    return Ok(mappedProduct);
                 }
                 else
                 {
-                    return BadRequest("Failed to create product");
+                    return BadRequest( new BadRequestException("Failed to create product"));
                 }
             }
             catch (Exception ex)

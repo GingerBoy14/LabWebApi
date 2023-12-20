@@ -1,3 +1,5 @@
+import { EditProductDialogComponent } from './pages/home-components/products-panel/edit-product-dialog/edit-product-dialog.component';
+import { CreateProductDialogComponent } from './pages/home-components/products-panel/create-product-dialog/create-product-dialog.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
@@ -18,6 +20,7 @@ import { LoginComponent } from './pages/auth-components/login/login.component';
 import { MatModule } from './core/modules/mat.module';
 import { NgModule } from '@angular/core';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+import { ProductsListComponent } from './pages/home-components/products-panel/products-list/products-list.component';
 import { RegistrationComponent } from './pages/auth-components/registration/registration.component';
 import { RxReactiveFormsModule } from '@rxweb/reactive-form-validators'; // <-- #2 import module
 import { UsersListComponent } from './pages/home-components/admin-panel/users-list/users-list.component';
@@ -35,7 +38,10 @@ export function tokenGetter() {
     HeaderComponent,
     UsersListComponent,
     EnumNamePipe,
-    EditUserDialogComponent
+    EditUserDialogComponent,
+    ProductsListComponent,
+    CreateProductDialogComponent,
+    EditProductDialogComponent
   ],
   imports: [
     BrowserModule,

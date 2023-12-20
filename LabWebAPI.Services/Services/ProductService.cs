@@ -93,7 +93,7 @@ namespace LabWebAPI.Services.Services
             return productsInfo;
         }
 
-        public async Task<ProductDTO> EditProductAsync(SimpleProductDTO model) {
+        public async Task<ProductDTO> EditProductAsync(SimpleProductWithIdDTO model) {
 
             var product = await _productRepository.Query()
        .Include(p => p.UserWhoCreated)

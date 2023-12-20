@@ -12,7 +12,13 @@ export class HomeComponent implements OnInit {
       content: 'List of all users in system',
       path: 'users-list',
     },
+    {
+      title: 'Products List',
+      content: 'List of all products in system',
+      path: 'products-list',
+    },
   ];
-  constructor() {}
+  constructor() {
+  }
   ngOnInit() {}
 }

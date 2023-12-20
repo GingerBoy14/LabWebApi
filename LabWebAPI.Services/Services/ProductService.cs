@@ -93,11 +93,21 @@ namespace LabWebAPI.Services.Services
             return productsInfo;
         }
 
-        public async Task<ProductDTO> EditProductAsync(ProductDTO model) {
+        public async Task<ProductDTO> EditProductAsync(SimpleProductDTO model) {
+
+            var product = await _productRepository.Query()
+       .Include(p => p.UserWhoCreated)
+       .FirstOrDefaultAsync(p => p.Id == model.Id) ?? throw new ProductNotFoundException("Product not found!");
+
+            _mapper.Map(model, product);
+
+            await _productRepository.UpdateAsync(product);
 
             await _productRepository.SaveChangesAsync();
+            var formattedModel = new ProductDTO();
+            _mapper.Map(product, formattedModel);
 
-            return model;
+            return formattedModel;
         }
 
         public async Task<bool> AddProduct(Product model)

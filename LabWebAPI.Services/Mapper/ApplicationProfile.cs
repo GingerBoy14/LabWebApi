@@ -17,7 +17,7 @@ namespace LabWebAPI.Services.Mapper
             CreateMap<Product, ProductDTO>()
     .ForMember(dest => dest.UserWhoCreated, opt => opt.MapFrom(src => src.UserWhoCreated));
 
-
+            CreateMap<SimpleProductDTO, Product>();
 
             CreateMap<User, UserWithProductsDTO>()  // Додали новий мапінг для користувацького DTO, що включає список продуктів
           .ForMember(dest => dest.Products, opt => opt.MapFrom(src => src.Products));

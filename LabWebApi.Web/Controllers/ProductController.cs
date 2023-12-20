@@ -38,7 +38,7 @@ namespace LabWebApi.Web.Controllers
             return Ok(result);
         }
         [HttpPut("products")]
-        public async Task<IActionResult> EditProduct([FromBody] ProductDTO model)
+        public async Task<IActionResult> EditProduct([FromBody] SimpleProductDTO model)
         {
             var result = await _productService.EditProductAsync(model);
             return Ok(result);

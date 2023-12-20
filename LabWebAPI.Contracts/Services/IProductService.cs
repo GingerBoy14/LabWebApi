@@ -13,7 +13,7 @@ namespace LabWebAPI.Contracts.Services
     {
         Task<IEnumerable<ProductDTO>> GetProductsAsync();
         Task<ProductDTO> GetProductByIdAsync(string id);
-        Task<ProductDTO> EditProductAsync(ProductDTO productDTO);
+        Task<ProductDTO> EditProductAsync(SimpleProductDTO productDTO);
         Task<bool> AddProduct(Product product);
         Task DeleteProductAsync(string id, string userId);
     }

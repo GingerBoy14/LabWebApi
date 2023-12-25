@@ -14,10 +14,7 @@ builder.Services.AddCustomServices();
 builder.Services.ConfigJwtOptions(builder.Configuration.GetSection("JwtOptions"));
 builder.Services.AddJwtAuthentication(builder.Configuration);
 
-builder.Services.AddSpaStaticFiles(configuration =>
-{
-    configuration.RootPath = "ClientApp/dist";
-});
+
 
 builder.Services.ConfigureImageSettings(builder.Configuration);
 
@@ -49,10 +46,5 @@ app.UseEndpoints(endpoints =>
 
 app.AddSystemRolesToDb();
 app.AddProductToDb();
-app.UseSpa(spa =>
-{
-    
-    spa.Options.SourcePath = "ClientApp";
-    spa.UseAngularCliServer(npmScript: "start");
-});
+
 app.Run();

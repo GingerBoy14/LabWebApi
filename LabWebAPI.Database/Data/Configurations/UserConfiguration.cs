@@ -32,7 +32,7 @@ namespace LabWebAPI.Database.Data.Configurations
            .HasMany(x => x.Products)
            .WithOne(x => x.UserWhoCreated)
            .HasForeignKey(x => x.UserWhoCreatedId)
-           .OnDelete(DeleteBehavior.Restrict);
+           .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

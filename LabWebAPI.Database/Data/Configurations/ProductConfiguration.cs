@@ -34,8 +34,7 @@ namespace LabWebAPI.Database.Data.Configurations
             builder
             .HasOne(x => x.UserWhoCreated)
             .WithMany(x => x.Products)
-            .HasForeignKey(x => x.UserWhoCreatedId)
-            .OnDelete(DeleteBehavior.Restrict);
+            .HasForeignKey(x => x.UserWhoCreatedId);
         }
     }
 }

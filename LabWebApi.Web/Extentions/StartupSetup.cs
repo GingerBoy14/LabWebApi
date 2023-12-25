@@ -98,8 +98,13 @@ namespace LabWebApi.Web.Extensions
             });
         }
 
+        public static void ConfigureImageSettings(this IServiceCollection services, IConfiguration configuration)
+        {
+            services.Configure<ImageSettings>(configuration.GetSection("ImageSettings"));
+        }
 
-    public static void AddJwtAuthentication(this IServiceCollection services, IConfiguration configuration)
+
+        public static void AddJwtAuthentication(this IServiceCollection services, IConfiguration configuration)
     {
         var jwtOptions = configuration.GetSection(nameof(JwtOptions)).Get<JwtOptions>();
         services.AddAuthentication(options =>

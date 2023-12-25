@@ -1,0 +1,14 @@
+.center-screen {
+  display: flex;
+  justify-content: center;
+}
+.card {
+  width: 500px;
+}
+.toolbar-with-labels {
+  display: flex;
+  justify-content: space-between;
+}
+.right-label {
+  color: #848844;
+}

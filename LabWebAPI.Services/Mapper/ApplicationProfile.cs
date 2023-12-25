@@ -3,6 +3,7 @@ using LabWebAPI.Contracts.Data.Entities;
 using LabWebAPI.Contracts.DTO.AdminPanel;
 using LabWebAPI.Contracts.DTO.Authentications;
 using LabWebAPI.Contracts.DTO.Product;
+using LabWebAPI.Contracts.DTO.Profile;
 
 namespace LabWebAPI.Services.Mapper
 {
@@ -19,7 +20,7 @@ namespace LabWebAPI.Services.Mapper
 
             CreateMap<SimpleProductDTO, Product>();
             CreateMap<SimpleProductWithIdDTO, Product>();
-
+            CreateMap<UserProfileDTO, User>();
             CreateMap<User, UserWithProductsDTO>()  // Додали новий мапінг для користувацького DTO, що включає список продуктів
           .ForMember(dest => dest.Products, opt => opt.MapFrom(src => src.Products));
 

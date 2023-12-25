@@ -15,9 +15,4 @@
     </PackageReference>
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="DTO\NewFolder1\" />
-    <Folder Include="DTO\NewFolder\" />
-  </ItemGroup>
-
 </Project>

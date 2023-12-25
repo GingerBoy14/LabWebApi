@@ -24,6 +24,9 @@ public static class StartupSetup
         services.AddScoped<IJwtService, JwtService>();
         services.AddScoped<IAdminService, AdminService>();
         services.AddScoped<IProductService, ProductService>();
+        services.AddScoped<IUserService, UserService>();
+        services.AddScoped<IFileService, FileService>();
+        services.AddScoped<ILocaleStorageService, LocaleStorageService>();
     }
     public static void ConfigJwtOptions(this IServiceCollection services, IConfiguration config)
     {

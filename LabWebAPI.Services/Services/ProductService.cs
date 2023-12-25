@@ -18,7 +18,7 @@ using System.Threading.Tasks;
 
 namespace LabWebAPI.Services.Services
 {
-    internal class ProductService : IProductService
+    public class ProductService : IProductService
     {
         private readonly IMapper _mapper;
         private readonly IRepository<Product> _productRepository;

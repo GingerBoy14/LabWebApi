@@ -46,4 +46,9 @@ namespace LabWebAPI.Contracts.Exceptions
     {
         public UnauthorizedToProductChangeException(string message) : base(message) { }
     }
+
+    public class OldPasswordInvalidException : BadRequestException
+    {
+        public OldPasswordInvalidException() : base("Old password is invalid!") { }
+    }
 }

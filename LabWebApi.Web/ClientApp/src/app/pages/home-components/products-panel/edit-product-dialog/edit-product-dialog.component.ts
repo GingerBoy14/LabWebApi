@@ -1,7 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
-import { AuthorizationRoles } from 'src/app/configs/auth-roles';
 import { FormGroup } from '@angular/forms';
 import { InputValidationService } from 'src/app/core/services/InputValidation.service';
 import { RxFormBuilder } from '@rxweb/reactive-form-validators';

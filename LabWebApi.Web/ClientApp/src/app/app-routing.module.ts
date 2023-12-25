@@ -7,6 +7,7 @@ import { HomeComponent } from './pages/home-components/home/home.component';
 import { LoginComponent } from './pages/auth-components/login/login.component';
 import { NgModule } from '@angular/core';
 import { ProductsListComponent } from './pages/home-components/products-panel/products-list/products-list.component';
+import { ProfileComponent } from './pages/home-components/profile/profile-show/profile.component';
 import { RegistrationComponent } from './pages/auth-components/registration/registration.component';
 import { UsersListComponent } from './pages/home-components/admin-panel/users-list/users-list.component';
 
@@ -30,6 +31,7 @@ const routes: Routes = [
     component: ProductsListComponent,
     canActivate: [AuthGuard],
   },
+  { path: "profile", component: ProfileComponent, canActivate: [AuthGuard] },
   { path: '**', redirectTo: '/login', pathMatch: 'full' },
 ];
 

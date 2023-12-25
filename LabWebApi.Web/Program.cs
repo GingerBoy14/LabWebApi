@@ -13,12 +13,15 @@ builder.Services.AddCustomServices();
 //Configure JWT
 builder.Services.ConfigJwtOptions(builder.Configuration.GetSection("JwtOptions"));
 builder.Services.AddJwtAuthentication(builder.Configuration);
+
 builder.Services.AddSpaStaticFiles(configuration =>
 {
     configuration.RootPath = "ClientApp/dist";
 });
 
-    //Infrastructure
+builder.Services.ConfigureImageSettings(builder.Configuration);
+
+//Infrastructure
 builder.Services.AddRepositories();
 builder.Services.AddDbContext(builder.Configuration.GetConnectionString("DefaultConnection"));
 

@@ -5,7 +5,12 @@
 >
   <span>
     <button mat-button routerLink="/">{{ title }}</button>
-    <button mat-button routerLink="/"><mat-icon>home</mat-icon></button>
+    <button mat-button routerLink="/" *ngIf="isAuthenticated">
+      <mat-icon>home</mat-icon> home
+    </button>
+    <button mat-button routerLink="/profile" *ngIf="isAuthenticated">
+      <mat-icon>person</mat-icon> profile
+    </button>
   </span>
   <div fxLayout="row" fxShow="false" fxShow.gt-sm>
     <button mat-button routerLink="/login" *ngIf="!isAuthenticated">

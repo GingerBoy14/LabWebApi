@@ -11,6 +11,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatTableModule } from '@angular/material/table';
+import {MatTabsModule} from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { NgModule } from '@angular/core';
 
@@ -29,7 +30,8 @@ import { NgModule } from '@angular/core';
     MatDatepickerModule,
     MatNativeDateModule,
     MatDialogModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatTabsModule
   ],
   exports: [
     MatToolbarModule,
@@ -45,7 +47,8 @@ import { NgModule } from '@angular/core';
     MatDatepickerModule,
     MatNativeDateModule,
     MatDialogModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatTabsModule
   ],
 })
 export class MatModule {}

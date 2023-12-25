@@ -1,5 +1,14 @@
 <mat-card id="product-list-header">
   <h1>Products</h1>
+  <mat-form-field>
+    <input
+      matInput
+      type="text"
+      placeholder="Search by name..."
+      [(ngModel)]="searchQuery"
+      (ngModelChange)="onSearchByName()"
+    />
+  </mat-form-field>
   <button mat-button color="primary" (click)="createProduct()">
     <span class="material-symbols-outlined">add</span>
   </button></mat-card
@@ -7,7 +16,7 @@
 <div class="data-table">
   <ngx-datatable
     class="material"
-    [rows]="products"
+    [rows]="filteredProduct"
     columnMode="force"
     [headerHeight]="50"
     [footerHeight]="50"

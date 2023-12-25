@@ -1,0 +1,58 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.comment-list-wrapper {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.no-comment {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.comment-header {
+  display: inline-flex;
+  justify-content: space-between;
+  gap: 16px;
+  width: 100%;
+}
+
+.commenter-name {
+  max-width: 150px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.comment-list {
+  min-width: 250px;
+  list-style-type: none;
+  padding-left: 0;
+}
+.comment-item {
+  width: 100%;
+}
+.comment-list > .comment-item:not(:last-of-type) {
+  border-bottom: 1px #999999 solid;
+  margin-bottom: 8px;
+}
+
+.comment-input {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0 16px;
+  align-self: flex-end;
+}
+.comment-input > button {
+  height: 34px;
+}

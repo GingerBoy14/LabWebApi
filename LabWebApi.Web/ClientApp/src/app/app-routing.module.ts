@@ -1,3 +1,4 @@
+import { ProductsViewComponent } from './pages/home-components/products-panel/product-view/product-view.component';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AdminRoleGuard } from './core/guards/AdminRoleGuard';
@@ -29,6 +30,11 @@ const routes: Routes = [
   {
     path: 'products-list',
     component: ProductsListComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'products/:id',
+    component: ProductsViewComponent,
     canActivate: [AuthGuard],
   },
   { path: "profile", component: ProfileComponent, canActivate: [AuthGuard] },

@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LabWebAPI.Database.Migrations
 {
     [DbContext(typeof(LabWebApiDbContext))]
-    [Migration("20231225184157_ProductComments")]
+    [Migration("20231225222643_ProductComments")]
     partial class ProductComments
     {
         /// <inheritdoc />
@@ -32,7 +32,6 @@ namespace LabWebAPI.Database.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("ProductId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<DateTime>("PublicationDate")
@@ -43,7 +42,6 @@ namespace LabWebAPI.Database.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserWhoCreatedId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
@@ -331,14 +329,12 @@ namespace LabWebAPI.Database.Migrations
                     b.HasOne("LabWebAPI.Contracts.Data.Entities.Product", "Product")
                         .WithMany("Comments")
                         .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("LabWebAPI.Contracts.Data.Entities.User", "UserWhoCreated")
                         .WithMany("Comments")
                         .HasForeignKey("UserWhoCreatedId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.SetNull);
 
                     b.Navigation("Product");
 

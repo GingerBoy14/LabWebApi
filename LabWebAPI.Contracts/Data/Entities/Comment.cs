@@ -16,10 +16,10 @@ namespace LabWebAPI.Contracts.Data.Entities
 
         public DateTime PublicationDate { get; set; }
 
-        public string ProductId { get; set; }
-        public Product Product { get; set; } = null!;
+        public string? ProductId { get; set; }
+        public Product? Product { get; set; }
 
-        public string UserWhoCreatedId { get; set; }
-        public User UserWhoCreated { get; set; } = null!;
+        public string? UserWhoCreatedId { get; set; }
+        public User? UserWhoCreated { get; set; }
     }
 }

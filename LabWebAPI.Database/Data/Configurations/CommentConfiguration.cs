@@ -23,15 +23,15 @@ namespace LabWebAPI.Database.Data.Configurations
             .Property(x => x.PublicationDate)
             .HasColumnType("datetime")
             .IsRequired();
-            builder
-            .HasOne(x => x.UserWhoCreated)
-            .WithMany(x => x.Comments)
-            .HasForeignKey(x => x.UserWhoCreatedId);
-            builder
-         .HasOne(x => x.Product)
-         .WithMany(x => x.Comments)
-         .HasForeignKey(x => x.ProductId)
-              .OnDelete(DeleteBehavior.Restrict);
+            builder.HasOne(x => x.Product)
+          .WithMany(x => x.Comments)
+          .HasForeignKey(x => x.ProductId)
+          .OnDelete(DeleteBehavior.Restrict);
+
+            builder.HasOne(x => x.UserWhoCreated)
+                .WithMany(x => x.Comments)
+                .HasForeignKey(x => x.UserWhoCreatedId)
+                .OnDelete(DeleteBehavior.SetNull);
         }
     }
 }

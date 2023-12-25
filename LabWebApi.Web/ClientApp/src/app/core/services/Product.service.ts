@@ -1,3 +1,5 @@
+import { CommentInfo } from './../models/comment/CommentDTO';
+import { productCommentsUrl } from './../../configs/productController-endpoints';
 import { Observable, of } from 'rxjs';
 
 import { AlertService } from './Alert.service';
@@ -5,7 +7,6 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ProductInfo } from '../models/products/ProductInfo';
 import { SimpleProductInfo } from './../models/products/SimpleProductInfo';
-import { UserInfo } from '../models/admin/UserInfo';
 import { catchError } from 'rxjs/operators';
 import {productsUrl,productsBaseUrl} from 'src/app/configs/productController-endpoints';
 
@@ -51,6 +52,14 @@ export class ProductService {
       catchError((err) => {
         this.alertService.errorAlert(err.error, 'Get Product Failed!');
         return of<ProductInfo>();
+      })
+    );
+  }
+  getProductComments(productId: string): Observable<CommentInfo[]> {
+    return this.http.get<CommentInfo[]>(productCommentsUrl(productId)).pipe(
+      catchError((err) => {
+        this.alertService.errorAlert(err.error, 'Get Product Comments Failed!');
+        return of<CommentInfo[]>();
       })
     );
   }

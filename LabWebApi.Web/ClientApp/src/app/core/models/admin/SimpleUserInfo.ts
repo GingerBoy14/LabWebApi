@@ -16,4 +16,5 @@ export class SimpleUserInfo {
   @alpha()
   surname: string;
   @required() @email() email: string;
+  imageAvatarUrl: string
 }

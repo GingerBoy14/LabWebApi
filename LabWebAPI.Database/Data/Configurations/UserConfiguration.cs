@@ -29,15 +29,16 @@ namespace LabWebAPI.Database.Data.Configurations
             .Property(x => x.ImageAvatarUrl)
             .IsRequired(false);
             builder
-           .HasMany(x => x.Products)
-           .WithOne(x => x.UserWhoCreated)
-           .HasForeignKey(x => x.UserWhoCreatedId)
-           .OnDelete(DeleteBehavior.Cascade);
+    .HasMany(x => x.Comments)
+    .WithOne(x => x.UserWhoCreated)
+    .HasForeignKey(x => x.UserWhoCreatedId)
+    .OnDelete(DeleteBehavior.SetNull);
+
             builder
-         .HasMany(x => x.Comments)
-         .WithOne(x => x.UserWhoCreated)
-         .HasForeignKey(x => x.UserWhoCreatedId)
-         .OnDelete(DeleteBehavior.Cascade);
+                .HasMany(x => x.Products)
+                .WithOne(x => x.UserWhoCreated)
+                .HasForeignKey(x => x.UserWhoCreatedId)
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

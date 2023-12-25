@@ -1,15 +1,16 @@
+import { Router } from '@angular/router';
 import { EditProductDialogComponent } from './../edit-product-dialog/edit-product-dialog.component';
 import { ProductInfo } from './../../../../core/models/products/ProductInfo';
 import { SimpleProductInfo } from './../../../../core/models/products/SimpleProductInfo';
 import { CreateProductDialogComponent } from './../create-product-dialog/create-product-dialog.component';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter } from '@angular/core';
 
 import { AlertService } from '../../../../core/services/Alert.service';
 import { AuthenticationService } from './../../../../core/services/Authentication.service';
 import { AuthorizationRoles } from './../../../../configs/auth-roles';
 import { MatDialog } from '@angular/material/dialog';
 import { ProductService } from './../../../../core/services/Product.service';
-
+import { } from '@swimlane/ngx-datatable'
 @Component({
   selector: 'products-list',
   templateUrl: './products-list.component.html',
@@ -23,13 +24,18 @@ export class ProductsListComponent implements OnInit {
     private productService: ProductService,
     private alertService: AlertService,
     private dialog: MatDialog,
+    private router: Router,
     private authService: AuthenticationService
   ) {}
   async ngOnInit() {
     this.productService.getProducts().subscribe((data: ProductInfo[]) => {
       this.products = data;
-      this.filteredProduct = data;
     });
+  }
+  onRowClick(data:any){
+    if(data.type==='click'){
+      this.router.navigate(['products/'+data.row.id]);
+    }
   }
 
   isCurrentUserAdmin(): boolean {
@@ -43,9 +49,8 @@ export class ProductsListComponent implements OnInit {
   }
 
   onSearchByName() {
-    console.log(this.searchQuery);
     if (!this.searchQuery) {
-      this.filteredProduct = this.products;
+      this.filteredProduct = [];
     } else {
       this.filteredProduct = this.products.filter((product: ProductInfo) =>
         product.name

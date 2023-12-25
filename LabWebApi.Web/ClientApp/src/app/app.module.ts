@@ -1,3 +1,5 @@
+import { CommentsListComponent } from './pages/home-components/products-panel/comments-list/comments-list.component';
+import { ProductsViewComponent } from './pages/home-components/products-panel/product-view/product-view.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
@@ -47,7 +49,9 @@ export function tokenGetter() {
     EditProductDialogComponent,
     ProfileComponent,
     ProfileEditComponent,
-    ProfileChangePasswordComponent
+    ProfileChangePasswordComponent,
+    ProductsViewComponent,
+    CommentsListComponent
   ],
   imports: [
     BrowserModule,

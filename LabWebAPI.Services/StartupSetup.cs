@@ -27,6 +27,7 @@ public static class StartupSetup
         services.AddScoped<IUserService, UserService>();
         services.AddScoped<IFileService, FileService>();
         services.AddScoped<ILocaleStorageService, LocaleStorageService>();
+        services.AddScoped<ICommentService, CommentService>();
     }
     public static void ConfigJwtOptions(this IServiceCollection services, IConfiguration config)
     {

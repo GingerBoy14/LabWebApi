@@ -9,23 +9,15 @@ using System.Threading.Tasks;
 
 namespace LabWebAPI.Database.Data.Configurations
 {
-    internal class ProductConfiguration : IEntityTypeConfiguration<Product>
+
+    internal class CommentConfiguration : IEntityTypeConfiguration<Comment>
     {
-        public void Configure(EntityTypeBuilder<Product> builder)
+        public void Configure(EntityTypeBuilder<Comment> builder)
         {
             builder
             .HasKey(x => x.Id);
             builder
-            .Property(x => x.Name)
-            .HasMaxLength(100)
-            .IsRequired();
-            builder
-            .Property(x => x.Description)
-            .HasMaxLength(500)
-            .IsRequired();
-            builder
-            .Property(x => x.Price)
-            .HasColumnType("decimal(18,2)")
+            .Property(x => x.Text)
             .IsRequired();
             builder
             .Property(x => x.PublicationDate)
@@ -33,13 +25,13 @@ namespace LabWebAPI.Database.Data.Configurations
             .IsRequired();
             builder
             .HasOne(x => x.UserWhoCreated)
-            .WithMany(x => x.Products)
+            .WithMany(x => x.Comments)
             .HasForeignKey(x => x.UserWhoCreatedId);
             builder
-        .HasMany(x => x.Comments)
-        .WithOne(x => x.Product)
-        .HasForeignKey(x => x.ProductId)
-        .OnDelete(DeleteBehavior.Cascade);
+         .HasOne(x => x.Product)
+         .WithMany(x => x.Comments)
+         .HasForeignKey(x => x.ProductId)
+              .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

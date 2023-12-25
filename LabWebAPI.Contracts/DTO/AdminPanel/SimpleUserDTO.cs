@@ -13,4 +13,9 @@ namespace LabWebAPI.Contracts.DTO.AdminPanel
         public string Surname { get; set; }
         public string Email { get; set; }
     }
+
+    public class SimpleUserInfoWithAvatarDTO: SimpleUserInfoDTO
+    {
+        public string ImageAvatarUrl { get; set; }
+    }
 }

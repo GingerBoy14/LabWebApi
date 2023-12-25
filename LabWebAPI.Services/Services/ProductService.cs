@@ -22,17 +22,15 @@ namespace LabWebAPI.Services.Services
     {
         private readonly IMapper _mapper;
         private readonly IRepository<Product> _productRepository;
-        private readonly RoleManager<IdentityRole> _roleManager;
         private readonly UserManager<User> _userManager;
 
         public ProductService(IMapper mapper,
         IRepository<Product> productRepository,
-        UserManager<User> userManager,
-        RoleManager<IdentityRole> roleManager)
+        UserManager<User> userManager)
         {
             _mapper = mapper;
             _productRepository = productRepository;
-            _roleManager = roleManager;
+
             _userManager = userManager;
         }
 

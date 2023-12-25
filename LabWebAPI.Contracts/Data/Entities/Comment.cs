@@ -2,28 +2,24 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
-using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace LabWebAPI.Contracts.Data.Entities
 {
-    public class Product : IBaseEntity
+    public class Comment : IBaseEntity
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public string Id { get; set; }
-        public string Name { get; set; }    
+        public string Text { get; set; }
 
-        public string Description { get; set; } 
-        
-        public DateTime PublicationDate {  get; set; }
 
-        public decimal Price {  get; set; }
+        public DateTime PublicationDate { get; set; }
+
+        public string ProductId { get; set; }
+        public Product Product { get; set; } = null!;
 
         public string UserWhoCreatedId { get; set; }
         public User UserWhoCreated { get; set; } = null!;
-
-        [ForeignKey("ProductId")]
-        public ICollection<Comment> Comments { get; } = new List<Comment>();
     }
 }

@@ -33,6 +33,11 @@ namespace LabWebAPI.Database.Data.Configurations
            .WithOne(x => x.UserWhoCreated)
            .HasForeignKey(x => x.UserWhoCreatedId)
            .OnDelete(DeleteBehavior.Cascade);
+            builder
+         .HasMany(x => x.Comments)
+         .WithOne(x => x.UserWhoCreated)
+         .HasForeignKey(x => x.UserWhoCreatedId)
+         .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

@@ -17,13 +17,15 @@ namespace LabWebApi.Web.Controllers
     public class ProductController : ControllerBase
     {
         private readonly IProductService _productService;
+        private readonly ICommentService _commentService;
         private readonly UserManager<User> _userManager;
         private string UserId => User.FindFirst(ClaimTypes.NameIdentifier).Value;
 
 
-        public ProductController(IProductService productService, UserManager<User> userManager)
+        public ProductController(IProductService productService, UserManager<User> userManager, ICommentService commentService)
         {
             _productService = productService;
+            _commentService = commentService;
             _userManager = userManager;
         }
         [HttpGet("products")]
@@ -106,6 +108,12 @@ namespace LabWebApi.Web.Controllers
             {
                 return StatusCode(500, $"Internal Server Error: {ex.Message}");
             }
+        }
+        [HttpGet("products/{id}/comments")]
+        public async Task<IActionResult> GetProductComments(string id)
+        {
+            var result = await _commentService.GetProductCommentsAsync(id);
+            return Ok(result);
         }
     }
 }

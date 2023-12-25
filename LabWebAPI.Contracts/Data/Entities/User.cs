@@ -12,5 +12,8 @@ namespace LabWebAPI.Contracts.Data.Entities
 
         [ForeignKey("UserWhoCreatedId")]
         public ICollection<Product> Products { get;  } = new List<Product>();
+
+        [ForeignKey("UserWhoCreatedId")]
+        public ICollection<Comment> Comments { get; } = new List<Comment>();
     }
 }
